@@ -1,0 +1,40 @@
+{
+  "name": "debayon-mallik-portfolio",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "AI engineer portfolio — agentic systems, browser automation, enterprise data conversion.",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview --port 4173 --host 127.0.0.1",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:unit": "vitest run tests/unit",
+    "test:regression": "vitest run tests/regression",
+    "test:coverage": "vitest run --coverage",
+    "test:integration": "playwright test",
+    "test:load": "node tests/load/simulate-100-users.mjs",
+    "verify": "npm run test && npm run build && npm run test:integration"
+  },
+  "dependencies": {
+    "framer-motion": "^11.11.17",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@testing-library/user-event": "^14.5.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@vitest/coverage-v8": "^2.1.8",
+    "autocannon": "^7.15.0",
+    "autoprefixer": "^10.4.20",
+    "jsdom": "^25.0.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^5.4.11",
+    "vitest": "^2.1.8"
+  }
+}

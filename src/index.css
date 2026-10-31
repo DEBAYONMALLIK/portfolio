@@ -1,0 +1,85 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  body {
+    @apply bg-ink text-type font-sans antialiased;
+    font-feature-settings: 'cv05' 1, 'ss01' 1;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: rgba(125, 162, 255, 0.28);
+    color: #fff;
+  }
+
+  :focus-visible {
+    outline: 2px solid #7DA2FF;
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  h1, h2, h3 { text-wrap: balance; }
+  p { text-wrap: pretty; }
+}
+
+@layer components {
+  /* A hairline that reads as a wire in the node graph, not a decorative divider. */
+  .wire {
+    @apply border-hair;
+  }
+
+  .surface {
+    @apply bg-ink-raised border border-hair;
+  }
+
+  .mono-label {
+    @apply font-mono text-[0.6875rem] tracking-[0.06em] text-type-faint;
+  }
+
+  .link-underline {
+    @apply relative text-signal no-underline;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-size: 0% 1px;
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    transition: background-size 220ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  /* Faint grid, the plane the agent graph is drawn on. */
+  .graph-field {
+    background-image:
+      linear-gradient(to right, rgba(42, 50, 63, 0.35) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(42, 50, 63, 0.35) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+/* Thin, unobtrusive scrollbar — the page is long and dark. */
+::-webkit-scrollbar { width: 11px; height: 11px; }
+::-webkit-scrollbar-track { background: #070910; }
+::-webkit-scrollbar-thumb { background: #232B37; border: 3px solid #070910; border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #333D4D; }
